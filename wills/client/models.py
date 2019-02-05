@@ -69,7 +69,7 @@ class Client(models.Model):
     # Relationship Fields
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE, related_name="ClientLoginProfile"
+        on_delete=models.CASCADE, related_name="ClientLoginProfile", null=True
     )
 
 

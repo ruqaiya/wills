@@ -13,6 +13,8 @@ djangorestframework = "*"
 markdown = "*"
 django-filter = "*"
 django-crispy-forms = "*"
+lxml = "*"
+docx-mailmerge = "*"
 
 [requires]
 python_version = "3.7"
