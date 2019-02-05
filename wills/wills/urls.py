@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from lawOffice import urls as lawOfficeUrls 
 from user import urls as authUrls 
+from client import urls as clientUrls 
 from .views import home
 
 urlpatterns = [
@@ -26,4 +27,5 @@ urlpatterns = [
 
     path('office/', include(lawOfficeUrls)),
     path('user/', include(authUrls)),
+    path('client/', include(clientUrls)),
 ]

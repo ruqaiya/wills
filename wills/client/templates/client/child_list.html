@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<p><a class="btn btn-default" href="{% url 'client_child_list' %}">Child Listing</a></p>
+<table class="table">
+<tr>
+<td>ID</td><td>Link</td>
+    <td>name</td>
+    <td>slug</td>
+    <td>created</td>
+    <td>last_updated</td>
+    <td>dob</td>
+    <td>live_in</td>
+    <td>address</td>
+    <td>notes</td>
+    <td>custody</td>
+    <td>adopted</td>
+    <td>legitimate</td>
+</tr>
+{% for object in object_list %}
+<tr>
+    <td>{{object.pk}}</td>
+    <td><a href="{{object.get_absolute_url}}">{{object}}</a></td>
+    <td>{{ object.name }}</td>
+    <td>{{ object.slug }}</td>
+    <td>{{ object.created }}</td>
+    <td>{{ object.last_updated }}</td>
+    <td>{{ object.dob }}</td>
+    <td>{{ object.live_in }}</td>
+    <td>{{ object.address }}</td>
+    <td>{{ object.notes }}</td>
+    <td>{{ object.custody }}</td>
+    <td>{{ object.adopted }}</td>
+    <td>{{ object.legitimate }}</td>
+</tr>
+{% endfor %}
+</table><a class="btn btn-primary" href="{% url 'client_child_create' %}">Create new Child</a>
+{% endblock %}

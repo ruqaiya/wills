@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'rest_framework',
 
     'user',
-    'lawOffice'
+    'lawOffice',
+    'client'
 ]
 
 MIDDLEWARE = [

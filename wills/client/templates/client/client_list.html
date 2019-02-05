@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<p><a class="btn btn-default" href="{% url 'client_client_list' %}">Client Listing</a></p>
+<table class="table">
+<tr>
+<td>ID</td><td>Link</td>
+    <td>name</td>
+    <td>slug</td>
+    <td>created</td>
+    <td>last_updated</td>
+    <td>occupation</td>
+    <td>address</td>
+    <td>home_telephone</td>
+    <td>work_telephone</td>
+    <td>domicile</td>
+    <td>dob</td>
+    <td>place_of_birth</td>
+    <td>name_at_birth</td>
+    <td>marital_status</td>
+</tr>
+{% for object in object_list %}
+<tr>
+    <td>{{object.pk}}</td>
+    <td><a href="{{object.get_absolute_url}}">{{object}}</a></td>
+    <td>{{ object.name }}</td>
+    <td>{{ object.slug }}</td>
+    <td>{{ object.created }}</td>
+    <td>{{ object.last_updated }}</td>
+    <td>{{ object.occupation }}</td>
+    <td>{{ object.address }}</td>
+    <td>{{ object.home_telephone }}</td>
+    <td>{{ object.work_telephone }}</td>
+    <td>{{ object.domicile }}</td>
+    <td>{{ object.dob }}</td>
+    <td>{{ object.place_of_birth }}</td>
+    <td>{{ object.name_at_birth }}</td>
+    <td>{{ object.marital_status }}</td>
+</tr>
+{% endfor %}
+</table><a class="btn btn-primary" href="{% url 'client_client_create' %}">Create new Client</a>
+{% endblock %}

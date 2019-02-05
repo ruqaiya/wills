@@ -17,25 +17,24 @@ urlpatterns = (
 
 urlpatterns += (
     # urls for lawOffice
-    path('lawOffice/lawoffice/', views.lawOfficeListView.as_view(), name='lawOffice_lawoffice_list'),
-    path('lawOffice/lawoffice/create/', views.lawOfficeCreateView.as_view(), name='lawOffice_lawoffice_create'),
-    path('lawOffice/lawoffice/detail/<slug:slug>/', views.lawOfficeDetailView.as_view(), name='lawOffice_lawoffice_detail'),
-    path('lawOffice/lawoffice/update/<slug:slug>/', views.lawOfficeUpdateView.as_view(), name='lawOffice_lawoffice_update'),
+    path('lawoffice/', views.lawOfficeListView.as_view(), name='lawOffice_lawoffice_list'),
+    path('lawoffice/create/', views.lawOfficeCreateView.as_view(), name='lawOffice_lawoffice_create'),
+    path('lawoffice/detail/<slug:slug>/', views.lawOfficeDetailView.as_view(), name='lawOffice_lawoffice_detail'),
+    path('lawoffice/update/<slug:slug>/', views.lawOfficeUpdateView.as_view(), name='lawOffice_lawoffice_update'),
 )
 
 urlpatterns += (
     # urls for Lawyer
-    path('lawOffice/lawyer/', views.LawyerListView.as_view(), name='lawOffice_lawyer_list'),
-    path('lawOffice/lawyer/create/', views.LawyerCreateView.as_view(), name='lawOffice_lawyer_create'),
-    path('lawOffice/lawyer/detail/<slug:slug>/', views.LawyerDetailView.as_view(), name='lawOffice_lawyer_detail'),
-    path('lawOffice/lawyer/update/<slug:slug>/', views.LawyerUpdateView.as_view(), name='lawOffice_lawyer_update'),
+    path('lawyer/', views.LawyerListView.as_view(), name='lawOffice_lawyer_list'),
+    path('lawyer/create/', views.LawyerCreateView.as_view(), name='lawOffice_lawyer_create'),
+    path('lawyer/detail/<slug:slug>/', views.LawyerDetailView.as_view(), name='lawOffice_lawyer_detail'),
+    path('lawyer/update/<slug:slug>/', views.LawyerUpdateView.as_view(), name='lawOffice_lawyer_update'),
 )
 
 urlpatterns += (
     # urls for Administrator
-    path('lawOffice/administrator/', views.AdministratorListView.as_view(), name='lawOffice_administrator_list'),
-    path('lawOffice/administrator/create/', views.AdministratorCreateView.as_view(), name='lawOffice_administrator_create'),
-    path('lawOffice/administrator/detail/<slug:slug>/', views.AdministratorDetailView.as_view(), name='lawOffice_administrator_detail'),
-    path('lawOffice/administrator/update/<slug:slug>/', views.AdministratorUpdateView.as_view(), name='lawOffice_administrator_update'),
+    path('administrator/', views.AdministratorListView.as_view(), name='lawOffice_administrator_list'),
+    path('administrator/create/', views.AdministratorCreateView.as_view(), name='lawOffice_administrator_create'),
+    path('administrator/detail/<slug:slug>/', views.AdministratorDetailView.as_view(), name='lawOffice_administrator_detail'),
+    path('administrator/update/<slug:slug>/', views.AdministratorUpdateView.as_view(), name='lawOffice_administrator_update'),
 )
-

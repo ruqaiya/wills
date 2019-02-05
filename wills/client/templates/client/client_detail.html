@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<p><a class="btn btn-default" href="{% url 'client_client_list' %}">Client Listing</a></p>
+<table class="table">
+<tr><td>name</td><td>{{ object.name }}</td></tr>
+<tr><td>slug</td><td>{{ object.slug }}</td></tr>
+<tr><td>created</td><td>{{ object.created }}</td></tr>
+<tr><td>last_updated</td><td>{{ object.last_updated }}</td></tr>
+<tr><td>occupation</td><td>{{ object.occupation }}</td></tr>
+<tr><td>address</td><td>{{ object.address }}</td></tr>
+<tr><td>home_telephone</td><td>{{ object.home_telephone }}</td></tr>
+<tr><td>work_telephone</td><td>{{ object.work_telephone }}</td></tr>
+<tr><td>domicile</td><td>{{ object.domicile }}</td></tr>
+<tr><td>dob</td><td>{{ object.dob }}</td></tr>
+<tr><td>place_of_birth</td><td>{{ object.place_of_birth }}</td></tr>
+<tr><td>name_at_birth</td><td>{{ object.name_at_birth }}</td></tr>
+<tr><td>marital_status</td><td>{{ object.marital_status }}</td></tr>
+</table>
+<a class="btn btn-primary" href="{{object.get_update_url}}">Edit Client</a>
+
+{% endblock %}
