@@ -15,6 +15,7 @@ django-filter = "*"
 django-crispy-forms = "*"
 lxml = "*"
 docx-mailmerge = "*"
+docxtpl = "*"
 
 [requires]
 python_version = "3.7"

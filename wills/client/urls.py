@@ -47,3 +47,8 @@ urlpatterns += (
     path('child/detail/<slug:slug>/', views.ChildDetailView.as_view(), name='client_child_detail'),
     path('child/update/<slug:slug>/', views.ChildUpdateView.as_view(), name='client_child_update'),
 )
+
+urlpatterns += (
+    # urls for docGeneration
+    path('generate/', views.generateDoc2, name='generateDoc'),
+)
