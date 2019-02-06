@@ -27,12 +27,7 @@ go to 127.0.0.1:8000/admin/ and use the superuser credentials you created above.
 
 
 
-
-
-
-
-
 Try these for document building:
 
-https://docxtpl.readthedocs.io/en/latest/
-http://pbpython.com/python-word-template.html (trying this right now)
+https://docxtpl.readthedocs.io/en/latest/ -- this is working so far!!
+http://pbpython.com/python-word-template.html 
