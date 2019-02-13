@@ -24,5 +24,3 @@ class ChildForm(forms.ModelForm):
     class Meta:
         model = Child
         fields = ['name', 'dob', 'live_in', 'address', 'notes', 'custody', 'adopted', 'legitimate', 'session']
-
-
