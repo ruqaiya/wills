@@ -144,9 +144,9 @@ class Child(models.Model):
     live_in = BooleanField()
     address = CharField(max_length=200, null=True, blank=True)
     notes = TextField(max_length=5000, null=True, blank=True)
-    custody = BooleanField()
-    adopted = BooleanField()
-    legitimate = BooleanField()
+    custody = BooleanField(default=False)
+    adopted = BooleanField(default=False)
+    legitimate = BooleanField(default=True)
 
     # Relationship Fields
     session = models.ForeignKey(

@@ -44,6 +44,7 @@ urlpatterns += (
     # urls for Child
     path('child/', views.ChildListView.as_view(), name='client_child_list'),
     path('child/create/', views.ChildCreateView.as_view(), name='client_child_create'),
+    path('child/create2/', views.SampleAddView.as_view(), name='client_child_create2'),
     path('child/detail/<slug:slug>/', views.ChildDetailView.as_view(), name='client_child_detail'),
     path('child/update/<slug:slug>/', views.ChildUpdateView.as_view(), name='client_child_update'),
 )
