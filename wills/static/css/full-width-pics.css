@@ -3,9 +3,7 @@
  * Copyright 2013-2019 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-full-width-pics/blob/master/LICENSE)
  */
-body {
-  padding-top: 56px;
-}
+
 
 .bg-image-full {
   background: no-repeat center center scroll;
@@ -14,3 +12,11 @@ body {
   background-size: cover;
   -o-background-size: cover;
 }
+
+/*.navbar-default {
+  background-image: -webkit-linear-gradient(top, #EA0B0B 0%, #F89F9F 100%);
+  background-image: -o-linear-gradient(top, #EA0B0B 0%, #F89F9F 100%);
+  background-image: linear-gradient(to bottom, #EA0B0B 0%, #F89F9F 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#EA0B0B', endColorstr='#F89F9F', GradientType=0);
+}*/

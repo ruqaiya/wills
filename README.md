@@ -31,3 +31,6 @@ Try these for document building:
 
 https://docxtpl.readthedocs.io/en/latest/ -- this is working so far!!
 http://pbpython.com/python-word-template.html 
+
+
+Copy form format of the following: https://www.lawdepot.ca/

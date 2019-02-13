@@ -30,6 +30,9 @@ class lawOffice(models.Model):
     def __unicode__(self):
         return u'%s' % self.slug
 
+    def __str__(self):
+        return u'%s' % self.name
+
     def get_absolute_url(self):
         return reverse('lawOffice_lawoffice_detail', args=(self.slug,))
 
@@ -57,6 +60,9 @@ class Lawyer(models.Model):
 
     def __unicode__(self):
         return u'%s' % self.slug
+
+    def __str__(self):
+        return u'%s' % self.name
 
     def get_absolute_url(self):
         return reverse('lawOffice_lawyer_detail', args=(self.slug,))

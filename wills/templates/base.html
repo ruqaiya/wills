@@ -10,6 +10,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="{% static 'css/full-width-pics.css' %}" />
 
     <title>WillsPro - {% block title %}{% endblock %}</title>
   </head>
@@ -30,6 +31,12 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'client_client_create' %}">Add Customer</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'client_spouse_create' %}">Add Customer's Spouse</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'client_child_create' %}">Add Customer's Child</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'login' %}">Login</a>

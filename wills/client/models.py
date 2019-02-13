@@ -28,7 +28,7 @@ class ClientSession(models.Model):
     )
 
     lawyer = models.ForeignKey(
-        'client.Client',
+        'lawOffice.Lawyer',
         on_delete=models.CASCADE, related_name="lawyer"
     )
 

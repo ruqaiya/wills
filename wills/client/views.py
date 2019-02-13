@@ -2,13 +2,15 @@ from django.views.generic import DetailView, ListView, UpdateView, CreateView
 from .models import ClientSession, Client, Spouse, Child
 from .forms import ClientSessionForm, ClientForm, SpouseForm, ChildForm
 from mailmerge import MailMerge
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from docxtpl import DocxTemplate
 
 from django.views import generic
 from django.urls import reverse_lazy
 from django.forms import modelformset_factory
 from . import models
+
+from lawOffice.models import Lawyer
 
 class ClientSessionListView(ListView):
     model = ClientSession
@@ -35,6 +37,12 @@ class ClientListView(ListView):
 class ClientCreateView(CreateView):
     model = Client
     form_class = ClientForm
+
+    def form_valid(self, form):
+        self.object = form.save()
+        lawyer = Lawyer.objects.get(user=self.request.user)
+        ClientSession.objects.create(client=self.object, lawyer=lawyer)
+        return HttpResponseRedirect(self.get_success_url())
 
 
 class ClientDetailView(DetailView):
