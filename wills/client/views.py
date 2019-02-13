@@ -105,3 +105,24 @@ def generateDoc2(request):
     doc.save("generated_doc.docx")
 
     return HttpResponse("Aparently the doc is created!")
+
+class SampleAddView(generic.FormView):
+    success_url = reverse_lazy('lims:sample_list')
+    form_class = modelformset_factory(
+        Child,
+        fields=['name', 'collected', 'location'],
+        extra=3
+    )
+    template_name = 'lims/sample_form.html'
+
+    def get_form_kwargs(self):
+        kwargs = super(SampleAddView, self).get_form_kwargs()
+        kwargs["queryset"] = Child.objects.none()
+        return kwargs
+
+    def form_valid(self, form):
+        for sub_form in form:
+            if sub_form.has_changed():
+                sub_form.save()
+
+        return super(SampleAddView, self).form_valid(form)
