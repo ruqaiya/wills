@@ -33,4 +33,5 @@ https://docxtpl.readthedocs.io/en/latest/ -- this is working so far!!
 http://pbpython.com/python-word-template.html 
 
 
-Copy form format of the following: https://www.lawdepot.ca/
+Copy form format of the following: https://www.lawdepot.ca/ (a good short form with the basics)
+Good detailed questions: https://www.rocketlawyer.com/
