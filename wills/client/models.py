@@ -182,6 +182,11 @@ class Executor(models.Model):
     address = CharField(max_length=200, null=True, blank=True)
     notes = TextField(max_length=5000, null=True, blank=True)
 
+    session = models.ForeignKey(
+        'client.ClientSession',
+        on_delete=models.CASCADE
+    )
+
     class Meta:
         ordering = ('-created',)
 
@@ -196,3 +201,39 @@ class Executor(models.Model):
 
     def get_update_url(self):
         return reverse('client_executor_update', args=(self.slug,))
+
+
+class ChildCareTaker(models.Model):
+
+    # Fields
+    name = CharField(max_length=255)
+    slug = AutoSlugField(populate_from='name', blank=True)
+    created = DateTimeField(auto_now_add=True, editable=False)
+    last_updated = DateTimeField(auto_now=True, editable=False)
+    address = CharField(max_length=200, null=True, blank=True)
+    notes = TextField(max_length=5000, null=True, blank=True)
+
+    session = models.ForeignKey(
+        'client.ClientSession',
+        on_delete=models.CASCADE
+    )
+
+    child = models.ForeignKey(
+        'client.Child',
+        on_delete=models.CASCADE, related_name="CareTaker"
+    )
+
+    class Meta:
+        ordering = ('-created',)
+
+    def __unicode__(self):
+        return u'%s' % self.slug
+
+    def __str__(self):
+        return u'%s' % self.name
+
+    def get_absolute_url(self):
+        return reverse('client_caretaker_detail', args=(self.slug,))
+
+    def get_update_url(self):
+        return reverse('client_caretaker_update', args=(self.slug,))

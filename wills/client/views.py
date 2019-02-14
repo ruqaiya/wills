@@ -8,9 +8,8 @@ from docxtpl import DocxTemplate
 from django.views import generic
 from django.urls import reverse_lazy
 from django.forms import modelformset_factory
-from . import models
-
 from lawOffice.models import Lawyer
+
 
 class ClientSessionListView(ListView):
     model = ClientSession
@@ -91,7 +90,7 @@ class ChildUpdateView(UpdateView):
 
 
 def generateDoc(request):
-    template = "templates/will_templates/dummy.docx"
+    template = "templates/will_templates/will_template.docx"
 
     document = MailMerge(template)
     print("printing things")
@@ -106,6 +105,7 @@ def generateDoc(request):
 
     return HttpResponse("Aparently the doc is created!")
 
+
 def generateDoc2(request):
     doc = DocxTemplate("templates/will_templates/dummy2.docx")
     context = {
@@ -118,6 +118,7 @@ def generateDoc2(request):
     doc.save("generated_doc.docx")
 
     return HttpResponse("Aparently the doc is created!")
+
 
 class SampleAddView(generic.FormView):
     success_url = reverse_lazy('client_child_list')
