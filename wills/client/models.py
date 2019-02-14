@@ -7,12 +7,7 @@ from django.db.models import DateTimeField
 from django.db.models import FileField
 from django.db.models import TextField
 from django.conf import settings
-from django.contrib.contenttypes.fields import GenericForeignKey
-from django.contrib.contenttypes.models import ContentType
-from django.contrib.auth import get_user_model
-from django.contrib.auth import models as auth_models
 from django.db import models as models
-from django_extensions.db import fields as extension_fields
 
 
 class ClientSession(models.Model):
@@ -20,6 +15,7 @@ class ClientSession(models.Model):
     # Fields
     created = DateTimeField(auto_now_add=True, editable=False)
     last_updated = DateTimeField(auto_now=True, editable=False)
+    assign_executor = BooleanField(default=False)
 
     # Relationship Fields
     client = models.OneToOneField(
@@ -44,12 +40,21 @@ class ClientSession(models.Model):
     def get_absolute_url(self):
         return reverse('client_clientsession_detail', args=(self.pk,))
 
-
     def get_update_url(self):
         return reverse('client_clientsession_update', args=(self.pk,))
 
 
 class Client(models.Model):
+
+    # Choices Values
+    MARRIED = 'MR'
+    SINGLE = 'SL'
+    LIVINGTOGETHER = 'LT'
+    MARRIED_STATUS_CHOICES = (
+        (MARRIED, 'Married'),
+        (SINGLE, 'Single'),
+        (LIVINGTOGETHER, 'Living together')
+    )
 
     # Fields
     name = CharField(max_length=255)
@@ -64,14 +69,13 @@ class Client(models.Model):
     dob = DateField()
     place_of_birth = CharField(max_length=100)
     name_at_birth = CharField(max_length=255)
-    marital_status = CharField(max_length=100)
+    marital_status = CharField(max_length=2, choices=MARRIED_STATUS_CHOICES, default=SINGLE)
 
     # Relationship Fields
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE, related_name="ClientLoginProfile", null=True
     )
-
 
     class Meta:
         ordering = ('-created',)
@@ -84,7 +88,6 @@ class Client(models.Model):
 
     def get_absolute_url(self):
         return reverse('client_client_detail', args=(self.slug,))
-
 
     def get_update_url(self):
         return reverse('client_client_update', args=(self.slug,))
@@ -128,7 +131,6 @@ class Spouse(models.Model):
     def get_absolute_url(self):
         return reverse('client_spouse_detail', args=(self.slug,))
 
-
     def get_update_url(self):
         return reverse('client_spouse_update', args=(self.slug,))
 
@@ -166,6 +168,31 @@ class Child(models.Model):
     def get_absolute_url(self):
         return reverse('client_child_detail', args=(self.slug,))
 
-
     def get_update_url(self):
         return reverse('client_child_update', args=(self.slug,))
+
+
+class Executor(models.Model):
+
+    # Fields
+    name = CharField(max_length=255)
+    slug = AutoSlugField(populate_from='name', blank=True)
+    created = DateTimeField(auto_now_add=True, editable=False)
+    last_updated = DateTimeField(auto_now=True, editable=False)
+    address = CharField(max_length=200, null=True, blank=True)
+    notes = TextField(max_length=5000, null=True, blank=True)
+
+    class Meta:
+        ordering = ('-created',)
+
+    def __unicode__(self):
+        return u'%s' % self.slug
+
+    def __str__(self):
+        return u'%s' % self.name
+
+    def get_absolute_url(self):
+        return reverse('client_executor_detail', args=(self.slug,))
+
+    def get_update_url(self):
+        return reverse('client_executor_update', args=(self.slug,))
