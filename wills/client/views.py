@@ -1,6 +1,6 @@
 from django.views.generic import DetailView, ListView, UpdateView, CreateView
 from .models import ClientSession, Client, Spouse, Child
-from .forms import ClientSessionForm, ClientForm, SpouseForm, ChildForm
+from .forms import ClientSessionForm, ClientFormShort, ClientForm, SpouseFormShort, SpouseForm, ChildFormShort, ChildForm
 from mailmerge import MailMerge
 from django.http import HttpResponse, HttpResponseRedirect
 from docxtpl import DocxTemplate
@@ -35,7 +35,7 @@ class ClientListView(ListView):
 
 class ClientCreateView(CreateView):
     model = Client
-    form_class = ClientForm
+    form_class = ClientFormShort
 
     def form_valid(self, form):
         self.object = form.save()
@@ -59,7 +59,7 @@ class SpouseListView(ListView):
 
 class SpouseCreateView(CreateView):
     model = Spouse
-    form_class = SpouseForm
+    form_class = SpouseFormShort
 
 
 class SpouseDetailView(DetailView):
@@ -77,7 +77,7 @@ class ChildListView(ListView):
 
 class ChildCreateView(CreateView):
     model = Child
-    form_class = ChildForm
+    form_class = ChildFormShort
 
 
 class ChildDetailView(DetailView):
